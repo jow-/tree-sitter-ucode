@@ -318,9 +318,8 @@ scan_next_token(scanner_t *scanner, TSLexer *lexer, uint32_t *token_type)
             }
         }
 
-        if (lexer->lookahead == 0)
-            scanner->state = EOF;
-
+        lexer->mark_end(lexer);
+        scanner->state = EOF;
         *token_type = TOKEN_TEXT;
         return true;
 
