@@ -38,6 +38,7 @@ module.exports = grammar({
 
   extras: $ => [
     $.comment,
+    $._ws,
   ],
 
   precedences: $ => [
@@ -94,6 +95,8 @@ module.exports = grammar({
     ),
 
     hash_bang_line: _ => /#!.*/,
+
+    _ws: _ => /\s+/,
 
     _eos: $ => choice(
       $._optional_semicolon,
