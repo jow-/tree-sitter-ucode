@@ -605,16 +605,16 @@ module.exports = grammar({
       '(',
       optional(seq(
         repeat(seq(
-          choice(
+          field('argument', choice(
             $._spread_expression,
             $._expression,
-          ),
+          )),
           ',',
         )),
-        choice(
+        field('argument', choice(
           $._spread_expression,
           $._expression,
-        )
+        ))
       )),
       ')'
     ),
@@ -622,12 +622,12 @@ module.exports = grammar({
     call_expression: $ => choice(
       prec('call', seq(
         field('function', $._expression),
-        field('argument', $._arguments),
+        $._arguments,
       )),
       prec('member', seq(
         field('function', $._primary_expression),
         field('optional_chain', $.optional_chain),
-        field('argument', $._arguments),
+        $._arguments,
       )),
     ),
 

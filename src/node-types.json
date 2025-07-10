@@ -896,7 +896,7 @@
     "fields": {
       "argument": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "(",
@@ -904,10 +904,6 @@
           },
           {
             "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
             "named": false
           },
           {
