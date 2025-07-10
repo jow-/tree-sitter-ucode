@@ -634,11 +634,11 @@ module.exports = grammar({
     array: $ => seq(
       '[',
       optional(
-        field('element', seq(
-          $._array_element,
-          repeat(seq(',', $._array_element)),
+        seq(
+          field('element', $._array_element),
+          repeat(seq(',', field('element', $._array_element))),
           optional(',')
-        ))
+        )
       ),
       ']',
     ),
