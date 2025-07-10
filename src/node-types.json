@@ -4023,10 +4023,6 @@
         "required": false,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
             "type": "object_property",
             "named": true
           }

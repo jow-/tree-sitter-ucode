@@ -55,6 +55,10 @@
       "type": "PATTERN",
       "value": "#!.*"
     },
+    "_ws": {
+      "type": "PATTERN",
+      "value": "\\s+"
+    },
     "_eos": {
       "type": "CHOICE",
       "members": [
@@ -3675,53 +3679,49 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "FIELD",
-              "name": "property",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "property",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "object_property"
-                    }
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "property",
-                    "content": {
-                      "type": "REPEAT",
-                      "content": {
-                        "type": "SEQ",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": ","
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "object_property"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "CHOICE",
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "property",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "object_property"
+                  }
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
                     "members": [
                       {
                         "type": "STRING",
                         "value": ","
                       },
                       {
-                        "type": "BLANK"
+                        "type": "FIELD",
+                        "name": "property",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "object_property"
+                        }
                       }
                     ]
                   }
-                ]
-              }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -4297,8 +4297,8 @@
       "name": "comment"
     },
     {
-      "type": "PATTERN",
-      "value": "[\\s\\p{Zs}\\uFEFF\\u2028\\u2029\\u2060\\u200B]"
+      "type": "SYMBOL",
+      "name": "_ws"
     }
   ],
   "conflicts": [

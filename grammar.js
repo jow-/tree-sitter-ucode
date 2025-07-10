@@ -653,11 +653,11 @@ module.exports = grammar({
     object: $ => seq(
       '{',
       optional(
-        field('property', seq(
+        seq(
           field('property', $.object_property),
-          field('property', repeat(seq(',', $.object_property))),
+          repeat(seq(',', field('property', $.object_property))),
           optional(',')
-        ))
+        )
       ),
       '}',
     ),
