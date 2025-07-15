@@ -1644,7 +1644,7 @@
     "type": "export_item",
     "named": true,
     "fields": {
-      "alias": {
+      "symbol_alias": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1654,7 +1654,7 @@
           }
         ]
       },
-      "default": {
+      "symbol_default": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1664,7 +1664,7 @@
           }
         ]
       },
-      "name": {
+      "symbol_name": {
         "multiple": false,
         "required": true,
         "types": [
@@ -1968,17 +1968,17 @@
             "named": true
           }
         ]
-      },
-      "symbol": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "export_item",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "export_item",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3536,7 +3536,7 @@
     "type": "import_item",
     "named": true,
     "fields": {
-      "alias": {
+      "symbol_alias": {
         "multiple": false,
         "required": false,
         "types": [
@@ -3546,7 +3546,7 @@
           }
         ]
       },
-      "default": {
+      "symbol_default": {
         "multiple": false,
         "required": false,
         "types": [
@@ -3556,7 +3556,7 @@
           }
         ]
       },
-      "name": {
+      "symbol_name": {
         "multiple": false,
         "required": false,
         "types": [
@@ -3606,17 +3606,17 @@
             "named": true
           }
         ]
-      },
-      "symbol": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "import_item",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "import_item",
+          "named": true
+        }
+      ]
     }
   },
   {

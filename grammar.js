@@ -372,27 +372,27 @@ module.exports = grammar({
 
     import_item: $ => choice(
       seq(
-        field('default', alias('default', $.import_name)),
+        field('symbol_default', alias('default', $.import_name)),
         'as',
-        field('alias', alias($._non_reserved_identifier, $.import_name)),
+        field('symbol_alias', alias($._non_reserved_identifier, $.import_name)),
       ),
       seq(
-        field('name', alias($.string, $.import_symbol)),
+        field('symbol_name', alias($.string, $.import_symbol)),
         'as',
-        field('alias', alias($._non_reserved_identifier, $.import_name)),
+        field('symbol_alias', alias($._non_reserved_identifier, $.import_name)),
       ),
       seq(
-        field('name', alias($._non_reserved_identifier, $.import_symbol)),
+        field('symbol_name', alias($._non_reserved_identifier, $.import_symbol)),
         'as',
-        field('alias', alias($._non_reserved_identifier, $.import_name)),
+        field('symbol_alias', alias($._non_reserved_identifier, $.import_name)),
       ),
-      field('name', alias($._non_reserved_identifier, $.import_symbol)),
+      field('symbol_name', alias($._non_reserved_identifier, $.import_symbol)),
     ),
 
     _import_list: $ => seq(
       '{',
-      repeat(seq(field('symbol', $.import_item), ',')),
-      field('symbol', $.import_item),
+      repeat(seq($.import_item, ',')),
+      $.import_item,
       '}',
     ),
 
@@ -421,21 +421,21 @@ module.exports = grammar({
     ),
 
     export_item: $ => seq(
-      field('name', alias($._non_reserved_identifier, $.export_name)),
+      field('symbol_name', alias($._non_reserved_identifier, $.export_name)),
       optional(seq(
         'as',
         choice(
-          field('alias', alias($._non_reserved_identifier, $.export_alias)),
-          field('alias', alias($.string, $.export_alias)),
-          field('default', alias('default', $.export_alias)),
+          field('symbol_alias', alias($._non_reserved_identifier, $.export_alias)),
+          field('symbol_alias', alias($.string, $.export_alias)),
+          field('symbol_default', alias('default', $.export_alias)),
         ),
       )),
     ),
 
     _export_list: $ => seq(
       '{',
-      repeat(seq(field('symbol', $.export_item), ',')),
-      field('symbol', $.export_item),
+      repeat(seq($.export_item, ',')),
+      $.export_item,
       '}',
     ),
 

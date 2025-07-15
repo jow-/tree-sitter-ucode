@@ -1438,7 +1438,7 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "default",
+              "name": "symbol_default",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1455,7 +1455,7 @@
             },
             {
               "type": "FIELD",
-              "name": "alias",
+              "name": "symbol_alias",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1473,7 +1473,7 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "name",
+              "name": "symbol_name",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1490,7 +1490,7 @@
             },
             {
               "type": "FIELD",
-              "name": "alias",
+              "name": "symbol_alias",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1508,7 +1508,7 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "name",
+              "name": "symbol_name",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1525,7 +1525,7 @@
             },
             {
               "type": "FIELD",
-              "name": "alias",
+              "name": "symbol_alias",
               "content": {
                 "type": "ALIAS",
                 "content": {
@@ -1540,7 +1540,7 @@
         },
         {
           "type": "FIELD",
-          "name": "name",
+          "name": "symbol_name",
           "content": {
             "type": "ALIAS",
             "content": {
@@ -1566,12 +1566,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "FIELD",
-                "name": "symbol",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "import_item"
-                }
+                "type": "SYMBOL",
+                "name": "import_item"
               },
               {
                 "type": "STRING",
@@ -1581,12 +1577,8 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "symbol",
-          "content": {
-            "type": "SYMBOL",
-            "name": "import_item"
-          }
+          "type": "SYMBOL",
+          "name": "import_item"
         },
         {
           "type": "STRING",
@@ -1710,7 +1702,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "name",
+          "name": "symbol_name",
           "content": {
             "type": "ALIAS",
             "content": {
@@ -1736,7 +1728,7 @@
                   "members": [
                     {
                       "type": "FIELD",
-                      "name": "alias",
+                      "name": "symbol_alias",
                       "content": {
                         "type": "ALIAS",
                         "content": {
@@ -1749,7 +1741,7 @@
                     },
                     {
                       "type": "FIELD",
-                      "name": "alias",
+                      "name": "symbol_alias",
                       "content": {
                         "type": "ALIAS",
                         "content": {
@@ -1762,7 +1754,7 @@
                     },
                     {
                       "type": "FIELD",
-                      "name": "default",
+                      "name": "symbol_default",
                       "content": {
                         "type": "ALIAS",
                         "content": {
@@ -1797,12 +1789,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "FIELD",
-                "name": "symbol",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "export_item"
-                }
+                "type": "SYMBOL",
+                "name": "export_item"
               },
               {
                 "type": "STRING",
@@ -1812,12 +1800,8 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "symbol",
-          "content": {
-            "type": "SYMBOL",
-            "name": "export_item"
-          }
+          "type": "SYMBOL",
+          "name": "export_item"
         },
         {
           "type": "STRING",
