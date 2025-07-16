@@ -139,12 +139,12 @@ module.exports = grammar({
       $.expression_tag_close,
     ),
 
-    expression_statement: $ => seq($._expressions, $._eos),
+    expression_statement: $ => seq(field('expression', $._expressions), $._eos),
     _empty_statement: $ => $._eos,
 
     return_statement: $ => seq(
       'return',
-      field('value', optional($._expressions)),
+      optional(field('value', $._expressions)),
       $._eos,
     ),
 
@@ -186,25 +186,25 @@ module.exports = grammar({
 
     _if_statement_normal: $ => prec.right(seq(
       'if',
-      field('condition', $._parenthesized_expression),
+      field('condition', $.parenthesized_expression),
       field('statement', $._statement),
       optional(field('else_statement', seq('else', $._statement)))
     )),
 
     _if_statement_alt: $ => seq(
       'if',
-      field('condition', $._parenthesized_expression),
+      field('condition', $.parenthesized_expression),
       ':',
-      field('statement', $._statements),
+      field('statement', alias($._statements, $.if_alt_body)),
       repeat(seq(
         'elif',
-        field('elif_condition', $._parenthesized_expression),
+        field('elif_condition', $.parenthesized_expression),
         ':',
-        field('elif_statement', $._statements),
+        field('elif_statement', alias($._statements, $.elif_alt_body)),
       )),
       optional(seq(
         'else',
-        field('else_statement', $._statements)
+        field('else_statement', alias($._statements, $.else_alt_body))
       )),
       'endif',
     ),
@@ -216,15 +216,15 @@ module.exports = grammar({
 
     _while_statement_alt: $ => seq(
       'while',
-      field('condition', $._parenthesized_expression),
+      field('condition', $.parenthesized_expression),
       ':',
-      field('statement', $._statements),
+      field('statement', alias($._statements, $.while_alt_body)),
       'endwhile',
     ),
 
     _while_statement_normal: $ => seq(
       'while',
-      field('condition', $._parenthesized_expression),
+      field('condition', $.parenthesized_expression),
       field('statement', $._statement),
     ),
 
@@ -278,7 +278,7 @@ module.exports = grammar({
       'for', '(',
       $._for_header,
       ')', ':',
-      field('statement', $._statements),
+      field('statement', alias($._statements, $.for_alt_body)),
       'endfor',
     ),
 
@@ -355,7 +355,7 @@ module.exports = grammar({
 
     try_statement: $ => seq(
       'try', '{',
-      optional(field('try', $._statements)),
+      optional(field('try', alias($._statements, $.try_block))),
       '}',
       'catch',
       optional(
@@ -366,7 +366,7 @@ module.exports = grammar({
         )
       ),
       '{',
-      optional(field('catch', $._statements)),
+      optional(field('catch', alias($._statements, $.catch_block))),
       '}',
     ),
 
@@ -490,7 +490,7 @@ module.exports = grammar({
       $.lambda_expression,
       $.function_expression,
       $.call_expression,
-      $._parenthesized_expression,
+      $.parenthesized_expression,
     ),
 
     template_string: $ => seq(
@@ -733,9 +733,9 @@ module.exports = grammar({
       $._expression,
     ),
 
-    _parenthesized_expression: $ => seq(
+    parenthesized_expression: $ => seq(
       '(',
-      $._expressions,
+      field('expression', $._expressions),
       ')',
     ),
 
