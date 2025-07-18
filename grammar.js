@@ -86,12 +86,12 @@ module.exports = grammar({
   rules: {
     markup: $ => seq(
       optional($.hash_bang_line),
-      repeat1($._statement),
+      repeat1(field('statement', $._statement)),
     ),
 
     program: $ => seq(
       optional($.hash_bang_line),
-      repeat1($._code_statement),
+      repeat1(field('statement', $._code_statement)),
     ),
 
     hash_bang_line: _ => /#!.*/,
